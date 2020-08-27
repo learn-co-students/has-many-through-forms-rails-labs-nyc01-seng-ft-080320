@@ -1,1 +1,8 @@
 
+<h1> User Show Page </h1>
+
+<h3> <%= @user.username.upcase %> </h3>
+
+<% @user.comments.each do |c| %>
+    <%= link_to c.post.title, post_path(c.post) %> <br>
+<% end %>

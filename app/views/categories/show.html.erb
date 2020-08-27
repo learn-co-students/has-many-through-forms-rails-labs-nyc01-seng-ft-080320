@@ -1,0 +1,7 @@
+<h1> Category Show Page </h1>
+
+<h3> <%= @category.name.upcase %> </h3>
+
+<% @category.posts.each do |p| %>
+    <%= link_to p.title, post_path(p) %> <br>
+<% end %>
