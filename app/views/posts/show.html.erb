@@ -26,11 +26,13 @@
     <%= f.label "new comment" %>
     <%= f.collection_select :user_ids, User.all, :id, :username %>
 
-    <%= f.label "new user" %>
+   <!--  <%= f.label "new user" %>
     <%= f.fields_for :users, @post.users.build do |users_fields| %>
         <%= users_fields.text_field :username %>
     <% end %>
 
     <%= f.label "post" %>
-    <%= f.hidden_field :post_id, value: @post.id %>
+    <%= f.hidden_field :post_id, value: @post.id %> -->
+
+    <%= f.submit %>
 <% end %>
