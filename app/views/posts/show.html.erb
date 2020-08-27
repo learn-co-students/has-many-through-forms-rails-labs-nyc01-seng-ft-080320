@@ -1,1 +1,36 @@
+<h1> Post Show Page </h1>
 
+<h3> <%= @post.title %> </h3>
+
+<p> <%= @post.content %> </p>
+
+<ul>
+    <% @post.categories.each do |category| %>
+       <li>  <%= category.name %> </li>
+    <% end %>
+</ul>
+
+<ul>
+    <% @post.comments.each do |comment| %>
+       <li>  <%= comment.content %> </li>
+    <% end %>
+</ul>
+
+<ul>
+    <% @post.unique_users.each do |user| %>
+       <li>  <%= link_to user.username, user_path(user) %> </li>
+    <% end %>
+</ul>
+
+<%= form_for @post do |f| %>
+    <%= f.label "new comment" %>
+    <%= f.collection_select :user_ids, User.all, :id, :username %>
+
+    <%= f.label "new user" %>
+    <%= f.fields_for :users, @post.users.build do |users_fields| %>
+        <%= users_fields.text_field :username %>
+    <% end %>
+
+    <%= f.label "post" %>
+    <%= f.hidden_field :post_id, value: @post.id %>
+<% end %>
