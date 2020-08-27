@@ -20,6 +20,7 @@ We've looked at setting up the associations behind posts with comments, categori
 
 1. Create a form at `posts#new` to create a new post. The form should include check boxes for us to select categories as well as a text field to create a new category. You should do this with a nested form so that our controller stays thin. Also, typing in a `Category` name that already exists should not create a new category. Instead, if we type in a category that already exists, we should select it from the database and associate the post we've created with the existing category.
 
+
 2. Create a `posts#show` page to display the following:
     * The title, categories, and content of the post.
     * All of the comments associated with the post.
@@ -45,3 +46,14 @@ We've looked at setting up the associations behind posts with comments, categori
 + [Collection Select](http://apidock.com/rails/ActionView/Helpers/FormOptionsHelper/collection_select)
 + [Lab Review](https://www.youtube.com/watch?v=k7s2LjVF3YY)
 + [API Doc: hidden_field](https://apidock.com/rails/ActionView/Helpers/FormHelper/hidden_field)
+
+
+
+
+1. posts have many categories/categories have many posts
+2. Post nested form with smart non duplicate categories
+3. Posts have many comments 
+4. A comment belong_to a user
+5. on the post show page I need a comment form with a drop down for users and a text box for a  user name
+6. Create a `users#show` page that links to all of the posts a user has commented on.
+7. Create a `categories#show` page that links to all of the posts associated with a given category.
