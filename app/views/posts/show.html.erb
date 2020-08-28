@@ -1,1 +1,8 @@
+<h1><%= @post.title %></h1>
+<p><%= pluralize(@post.categories.count, "Category") %>:
+<% @post.categories.each do |category| %>
+    <span><%= link_to category.name, category_path %></span>
+<% end %>
+</p>
+<p><%= @post.content %></p>
 
