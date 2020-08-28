@@ -6,3 +6,33 @@
 </p>
 <p><%= @post.content %></p>
 
+<% if @post.comments.count > 0 %>
+    <h6>Commented on by:</h6>
+
+    <% @post.users.unique.each do |user| %>
+        <span><%= link_to user.name, user_path %></span>
+    <% end %>
+
+    <h4>Comments:</h4>
+
+    <% @post.comments.each do |comment| %>
+        <h6><%= link_to comment.user, user_path %></h6><span> said:</span>
+        <p><%= comment.content %></p>
+    <% end %>
+
+<% end %>
+
+<h4>Write a comment</h4>
+<%= form_for @post.comments.build do |f| %>
+    <%= f.hidden_field :post_id, value: @post.id %>
+    <%= f.label "User" %>
+    <%= f.collection_select :user_id, User.all, :id, :name %><br>
+    
+    <%= f.text_area :content %><br>
+
+
+    <%= f.submit "Submit Comment" %>
+<% end %>
+
+
+
